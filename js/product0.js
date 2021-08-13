@@ -491,7 +491,6 @@ function getRes(){
 
 function printfilter(arr) {
     console.log("print filter called");
-    removePopovers();
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
@@ -500,23 +499,20 @@ function printfilter(arr) {
      out +=  '<div class=\"col-md-3 col-lg-3 col-6 mb-4 text-center\">' +
              '<div class=\"product-entry border\">' +
              '<div class=\"desc\">' +
-             '<h2><a href=\"' + arr[i].link + '\">' + name + '</a></h2>' +
+             '<h2><a href=\"' + "../sql/forward.php?site=" + arr[i].link + "&id=" + arr[i].id + '\">' + name + '</a></h2>' +
              '</div>' +
-             '<a href=\"' + arr[i].link + '\" class=\"prod-img\">' +
+             '<a href=\"' + "../sql/forward.php?site=" + arr[i].link + "&id=" + arr[i].id + '\" class=\"prod-img\">' +
              '<img src="' + arr[i].img + '" class=\"img-fluid product-image\" alt=\"product image\">' +
              '</a>' +
              '<div class=\"desc mb-2\">' +
-             '<h2><a href=\"' + arr[i].link + '\">' + arr[i].name + '</a></h2>' +
-
+             '<h2><a href=\"' + "../sql/forward.php?site=" + arr[i].link + "&id=" + arr[i].id + '\">' + arr[i].name + '</a></h2>' +
              '<span class=\"price\">£' + arr[i].price +'</span>' +
-
              '</div>' +
              '<div class=\"col-12\" style="bottom: 0 !important; position: absolute !important;">' +
              '<div class=\"row justify-content-start pr-4\">' +
-             '<div class=\"col-2 px-0\">' +
-             '<i id="report-button" class="icon-th-menu"' +
-                 'data-toggle="popover" data-placement="right" title="Report Listing"' +
-                 'data-content="And heres some amazing content. Its very engaging. Right?">' +
+             '<div class=\"col-2 px-0 pb-1\">' +
+             '<i id="' + arr[i].id + '.report" class="icon-question d-none d-lg-block report-button"' +
+                 'data-toggle="tooltip" data-placement="top" title="Report Listing">' +
              '</i>' +
              '</div>' +
              '</div>' +
@@ -526,7 +522,7 @@ function printfilter(arr) {
 
     }
     document.getElementById("id01").innerHTML = out;
-    enablePopover();
+    enabletooltip();
 }
 
 
@@ -637,30 +633,72 @@ function moveToPage(no){
 <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
 **/
 
-function enablePopover(){
-  $('[data-toggle="popover"]').popover();
+function enabletooltip(){
+  $('[data-toggle="tooltip"]').tooltip();
+  $("i").click(function () {
+    console.log(this.id);
+    callReportModal(this.id.replace(".report", ''));
+  })
+}
+var reportId = '';
+function callReportModal(id){
+  reportId = id;
+  getReportOptions();
+  printReportOptions();
+  $('#report-modal').modal('show');
 }
 
-function removePopovers(){
-  $("[data-toggle='popover']").popover('hide');
+function printReportOptions(){
+  var out = '<option disabled selected>Choose...</option>';
+  for(var i = 0; i < reportArray.length; i++) {
+    out += '<option value="' + reportArray[i].title + '">' + reportArray[i].title + '</option>';
+  }
+  document.getElementById("report-select").innerHTML = out;
 }
 
-$("#report-button").on('show.bs.popover', function () {
-  console.log('popover called');
-})
+$( "#submit-report" ).click(function() {
+  var res = $('#report-select').val();
+  if (res != null) {
+    submitReport(res);
+  }
+  $('#report-modal').modal('hide');
+});
+
+function submitReport(res){
+  $.ajax({
+    type: 'POST',
+    url: '../sql/submit_report.php',
+    data: {reportId: reportId, reason: res},
+    error:function(x,e) {
+    if (x.status==0) {
+        alert('You are offline!!\n Please Check Your Network.');
+    } else if(x.status==404) {
+        alert('Requested URL not found.');
+    } else if(x.status==500) {
+        alert('Internel Server Error.');
+    } else if(e=='parsererror') {
+        alert('Error.\nParsing JSON Request failed.');
+    } else if(e=='timeout'){
+        alert('Request Time out.');
+    } else {
+        alert('Unknow Error.\n'+x.responseText);
+    }
+    }
+  });
+}
 
 function getReportOptions(){
   $.ajax({
     type: 'POST',
-    url: 'php/get_report_options.php',
-    //data: {login: login, fname: name, password: password1, status:priv},
+    url: '../sql/get_report_options.php',
+    async: false,
     success: function(response) {
       var arr = JSON.parse(response);
       if (arr.status == "fail"){
-        throwInvalidError("Error Getting Depots", arr.message);
+        throwInvalidError("Error Getting reports", arr.message);
       } else{
         var arr = JSON.parse(response);
-        updateDepotArray(arr);
+        updateReportOptionsArray(arr);
       }
     },
     error:function(x,e) {
@@ -684,8 +722,8 @@ function getReportOptions(){
 function updateReportOptionsArray(arr){
   for(var i = 0; i < arr.length; i++){
     var temparray = {};
-    temparray['LID'] = arr[i].LID;
-    temparray['Depot_name'] = arr[i].Depot_name;
+    temparray['title'] = arr[i].title;
+    temparray['id'] = arr[i].id;
     reportArray.push(temparray);
   }
 }

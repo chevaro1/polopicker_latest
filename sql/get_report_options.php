@@ -8,7 +8,7 @@
 
 require_once 'config.php';
 
-$sql = "SELECT title FROM report_options WHERE status = '0' ORDER BY title ASC";
+$sql = "SELECT title, id FROM report_options WHERE status = '0' ORDER BY title ASC";
 
 $result = mysqli_query($link, $sql);
 

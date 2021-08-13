@@ -6,27 +6,29 @@
  * and open the template in the editor.
  */
 
-#echo $cat;
-#echo $fil;
-#echo $category;
+session_start();
+
 
 require_once 'config.php';
+require_once 'date_manager.php';
 
-$sql = "SELECT COUNT(DISTINCT(website)) AS total FROM `products`";
+# GET THE 15 MOST RECENT SEARCHES
+
+
+# TOTAL SEARCHES
+$sql = "SELECT timestamp, search_term FROM `search_data` ORDER BY timestamp DESC LIMIT 15";
+#echo $sql;
 
 $result = mysqli_query($link, $sql);
 
 $arr = [];
-$count = 0;
 
 if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        array_push($arr, $row);
-        $count += 1;
-
+      array_push($arr, $row);
     }
 }
-#echo $count;
+
 
 $jsondata = json_encode($arr);
 print $jsondata;

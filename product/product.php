@@ -4,7 +4,7 @@ $product = $_GET["prod"];
 if (isset($_GET["type"])) {
   $type = $_GET["type"];
 };
-$js = '<script src="../js/product.js"></script>';
+$js = '<script src="../js/product0.js"></script>';
 
 if ($type == "true"){
   $js = '<script src="../js/productbp.js"></script>';
@@ -26,6 +26,33 @@ $product = str_replace("-", " ", $product);
         <body onload="init()">
 
 	<div class="colorlib-loader"></div>
+
+  <div class="modal fade" id="report-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Report Listing</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          </div>
+          <select class="custom-select" id="report-select">
+
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="submit-report" class="btn btn-outline-info">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<div id="page">
 		<?php include('../blocks/header.php') ?>

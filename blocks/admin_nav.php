@@ -50,15 +50,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="search_data.php">
                 <span data-feather="bar-chart-2"></span>
-                Reports
+                Search Data
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
+              <a class="nav-link" href="click_through_data.php">
+                <span data-feather="bar-chart-2"></span>
+                Click Through Data
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages_viewed.php">
+                <span data-feather="bar-chart-2"></span>
+                Pages Viewed
               </a>
             </li>
           </ul>

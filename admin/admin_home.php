@@ -1,5 +1,6 @@
 <?php
 include '../blocks/logged-in.php';
+#error_log("entered admin home");
  ?>
 
 <!DOCTYPE HTML>
@@ -40,17 +41,25 @@ include '../blocks/logged-in.php';
                     <h4 class="card-title text-white">Live Sites:</h4>
                     <div class="card-body text-center"><h1 class="text-white" id="sites"></h1></div>
                   </div>
-                  <div class="card p-4 m-3 bg-warning border-dark text-white">
+                  <div class="card p-4 m-3 bg-primary border-dark text-white">
                     <h4 class="card-title text-white">Categories:</h4>
                     <div class="card-body text-center"><h1 class="text-white" id="cats"></h1></div>
                   </div>
-                  <div class="card p-4 my-3 ml-3 bg-danger border-dark text-white">
-                    <h4 class="card-title text-white">Erros Last Run:</h4>
-                    <div class="card-body text-center"><h1 class="text-white" id="errors"></h1></div>
-                  </div>
-                  <div class="card p-4 my-3 ml-3 bg-danger border-dark text-white">
-                    <h4 class="card-title text-white">Uncategorized Products:</h4>
+                  <div class="card p-4 my-3 ml-3 bg-primary border-dark text-white">
+                    <h4 class="card-title text-white">Uncategorized <br> Products:</h4>
                     <div class="card-body text-center"><h1 class="text-white" id="unknown"></h1></div>
+                  </div>
+                  <div class="card p-4 my-3 ml-3 bg-secondary border-dark text-white">
+                    <h4 class="card-title text-white">Users Today:</h4>
+                    <div class="card-body text-center"><h1 class="text-white" id="users-today"></h1></div>
+                  </div>
+                  <div class="card p-4 my-3 ml-3 bg-secondary border-dark text-white">
+                    <h4 class="card-title text-white">Click through rate:</h4>
+                    <div class="card-body text-center"><h1 class="text-white" id="click-through"></h1></div>
+                  </div>
+                  <div class="card p-4 my-3 ml-3 bg-secondary border-dark text-white">
+                    <h4 class="card-title text-white">Searches:</h4>
+                    <div class="card-body text-center"><h1 class="text-white" id="searches"></h1></div>
                   </div>
                 </div>
 

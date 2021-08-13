@@ -12,7 +12,10 @@
 
 require_once 'config.php';
 
-$sql = "SELECT COUNT(DISTINCT(website)) AS total FROM `products`";
+$todaysDate = date("Y-m-d");
+
+$sql = "SELECT COUNT(id) as total FROM `forward_data` WHERE datetime = '$todaysDate'";
+#echo $sql;
 
 $result = mysqli_query($link, $sql);
 
