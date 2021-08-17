@@ -1,7 +1,7 @@
 <?php
 
 $product = $_GET["prod"];
-
+$category = $_GET["cat"];
 
 ?>
 
@@ -90,7 +90,7 @@ $product = $_GET["prod"];
             </div>
             <div class="col-md-9 col-12 pt-2" id="colour-options">
               <a href="#"><span class="dot" style="background-color: blue;"></span></a>
-              <span class="dot" style="background-color: green;"></span>
+              <span class="dot" style="background-color: green;" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></span>
               <span class="dot" style="background-color: red;"></span>
               <span class="dot" style="background-color: pink;"></span>
             </div>
@@ -102,14 +102,14 @@ $product = $_GET["prod"];
             </div>
             <div class="col-md-4 col-12">
               <select class="form-control" id="gender-select">
-                <option selected>Male</option>
               </select>
             </div>
           </div>
-          <div class="col-12 pt-3">
+          <div class="col-12 pt-3" id="retailers-column">
 
+            <!-- THIS CARD IS FOR ONE OF THE RETAILERS -->
+						<a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <div class="card mb-2">
-              <!-- THIS CARD IS FOR ONE OF THE RETAILERS -->
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6 col-8 align-self-center">
@@ -124,6 +124,28 @@ $product = $_GET["prod"];
                 </div>
               </div>
             </div>
+						</a>
+
+						<div class="collapse" id="collapseExample">
+							<div class="col-12 col-md-11 offset-md-1 px-0">
+								<div class="card mb-2">
+		              <div class="card-body">
+		                <div class="row">
+		                  <div class="col-md-6 col-8 align-self-center">
+		                    <span class="align-middle"><h5 class="mb-0">Individual Product 1</h5></span>
+		                  </div>
+		                  <div class="col-md-3 d-none d-md-block">
+		                    <img src="https://www.naylors.com/media/catalog/product/cache/300x300/w/h/whitaker_adults_horizon_helmet_black.jpg" class="mx-auto company-logo" alt="">
+		                  </div>
+		                  <div class="col-4 col-md-3 align-self-center">
+		                    <span class="align-middle text-right"><h4 class="mb-0">£15.99</h4></span>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+							</div>
+							
+						</div>
 
 
 
@@ -183,15 +205,17 @@ $product = $_GET["prod"];
 	<!-- Main -->
 	<script src="../js/main.js"></script>
 
+	<script src="../js/config.js" charset="utf-8"></script>
 
   <script>
 
       var product = "<?php echo $product ?>";
-      console.log("product name = " + product);
+			var category = "<?php echo $category ?>";
+
   </script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="../js/config.js" charset="utf-8"></script>
+
   <script src="../js/product_page.js" charset="utf-8"></script>
 
 	</body>

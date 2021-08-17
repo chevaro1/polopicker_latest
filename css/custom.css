@@ -6,7 +6,7 @@
 }
 
 .checked {
-  color: orange; 
+  color: orange;
 }
 
 .dot {
@@ -15,6 +15,9 @@
  background-color: #bbb;
  border-radius: 50%;
  display: inline-block;
+ border-style: solid;
+ border-color: grey;
+ border-width: 2px;
 }
 
 .company-logo {
