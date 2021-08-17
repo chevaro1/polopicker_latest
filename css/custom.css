@@ -4,3 +4,20 @@
 .btn.btn-custom-xs {
   border-radius: 0;
 }
+
+.checked {
+  color: orange; 
+}
+
+.dot {
+ height: 30px;
+ width: 30px;
+ background-color: #bbb;
+ border-radius: 50%;
+ display: inline-block;
+}
+
+.company-logo {
+  height: 35px;
+  width 35px;
+}

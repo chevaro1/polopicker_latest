@@ -27,6 +27,9 @@
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
 
+	<!-- Font Awesome  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<!-- my personal sytlesheet -->
 	<link rel="stylesheet" href="../css/custom.css">
 
