@@ -72,7 +72,7 @@ if (mysqli_num_rows($result) > 0){
 
 }
 
-$rating = 3;
+$rating = 4;
 
 $arr = [
   "image" => $imgArray,
