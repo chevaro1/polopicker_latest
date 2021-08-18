@@ -74,9 +74,11 @@ function addProductData(arr){
 
 function printPageOptions(){
   $('#product-brand').html(brand);
+  printImages(imgArray);
   printRating(rating);
   printColours(colourArray);
   printGender(genderArray);
+
 }
 
 
@@ -162,7 +164,19 @@ function printGender(genders){
   }
 }
 
-
+function printImages(images){
+  $('#main-image').attr("src",images[0]);
+  var out = '';
+  for (var i = 0; i < images.length; i++) {
+    out += '<div class="col-2 border m-1 p-1">';
+    out += '<img src="' + images[i] + '" class="mx-auto img-fluid product-thumbnail" alt="Product Image">';
+    out += '</div>';
+  }
+  $('#image-thumbnail-row').html(out);
+  $(".product-thumbnail").click(function(){
+    $('#main-image').attr("src",this.src);
+  });
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                           the following functions handle printing the RETAILERS WHEN GIVEN AN ARRAY OF PRODUCTS
@@ -170,7 +184,8 @@ function printGender(genders){
 
 
 function printRetailers(retailers){
-  //log(retailers);
+  printRetailersImages(retailers);
+
   var websitePositions = [];
   for(var i = 0; i < retailers.length; i++) {
     if (!(retailers[i].website in websitePositions)) {
@@ -189,7 +204,8 @@ function printRetailers(retailers){
       out += '<div class="card-body">';
       out += '<div class="row">';
       out += '<div class="col-md-6 col-8 align-self-center">';
-      out += '<span class="align-middle"><h5 class="mb-0">' + retailers[websitePositions[key][0]].website + '</h5></span>';
+      out += '<span class="align-middle"><h5 class="mb-0 product-card-retailer">' + retailers[websitePositions[key][0]].website + '</h5></span>';
+      out += '<span class="align-middle"><h5 class="mb-0">' + retailers[websitePositions[key][0]].name + '</h5></span>';
       out += '</div>';
       out += '<div class="col-md-3 d-none d-md-block">';
       out += '<img src="' + retailers[websitePositions[key][0]].img + '" class="mx-auto company-logo" alt="Product image">';
@@ -208,7 +224,7 @@ function printRetailers(retailers){
       out += '<div class="card-body">';
       out += '<div class="row">';
       out += '<div class="col-10 order-1 col-md-6 align-self-center">';
-      out += '<span class="align-middle"><h5 class="mb-0">' + key + '</h5></span>';
+      out += '<span class="align-middle"><h5 class="mb-0 product-card-retailer">' + key + '</h5></span>';
       out += '</div>';
       out += '<div class="col-md-2 order-2 d-none d-md-block text-center">';
       out += '<img src="' + retailers[websitePositions[key][0]].img + '" class="mx-auto company-logo" alt="Product image">';
@@ -259,6 +275,13 @@ function printRetailers(retailers){
 
 }
 
+function printRetailersImages(retailers){
+  var prodImgArr = [];
+  for (var i = 0; i < retailers.length; i++) {
+    prodImgArr.push(retailers[i].img);
+  }
+  printImages(prodImgArr);
+}
 
 
 

@@ -41,3 +41,45 @@
 .retailer-main-card-body {
   background-color: #c9c7c1;
 }
+
+.product-thumbnail {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.product-thumbnail:hover {
+  opacity: 1;
+}
+
+.product-card-retailer {
+  text-decoration: underline;
+}
+
+@media (min-width: 576px) {
+  #main-image {
+    max-width: 40vw;
+    max-height: 30vw;
+    min-width: 10vw;
+    min-height: 10vw;
+  }
+
+  #main-image-div{
+    width: 45vw;
+    height: 30vw;
+  }
+}
+
+
+@media (max-width: 576px) {
+  #main-image {
+    max-width: 85vw;
+    max-height: 60vw;
+    min-width: 10vw;
+    min-height: 10vw;
+  }
+
+  #main-image-div{
+    width: 90vw;
+    height: 80vw;
+  }
+}

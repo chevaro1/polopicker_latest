@@ -62,8 +62,15 @@ $category = $_GET["cat"];
 
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-6 text-center py-5 border">
-          <img src="https://www.naylors.com/media/catalog/product/cache/300x300/w/h/whitaker_adults_horizon_helmet_black.jpg" class="mx-auto" alt="">
+        <div class="col-12 col-md-6 py-5 border">
+					<div class="col-12 px-0 py-3 text-center border" id="main-image-div">
+						<img id="main-image" src="" class="mx-auto" alt="Product Image">
+					</div>
+					<div class="col-12 mt-3">
+						<div class="row" id="image-thumbnail-row">
+
+						</div>
+					</div>
         </div>
         <div class="col-12 col-md-6 border">
           <div class="col-12">
