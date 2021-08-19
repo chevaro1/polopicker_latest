@@ -38,6 +38,12 @@
     transform:rotate(180deg);
 }
 
+.rotate.ninty{
+  -moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  transform:rotate(90deg);
+}
+
 .retailer-main-card-body {
   background-color: #c9c7c1;
 }
@@ -82,4 +88,79 @@
     width: 90vw;
     height: 80vw;
   }
+}
+
+@media (max-width: 576px) {
+  .filter-options {
+    /* height: 60vh; */
+    height: 0;
+    position: fixed !important;
+    z-index: 1;
+    width: 100vw !important;
+    overflow-x: hidden;
+    bottom: 0;
+    left: 0;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    transition: 0.5s;
+  }
+
+  #filter-options .filter-option{
+    border-top: #e0dede !important;
+    border-top-style: solid !important;
+    border-top-width: 1px !important;
+    margin-left: -15px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  #filter-options label {
+    font-size: 20px !important;
+  }
+  #filter-options label span {
+    color: grey !important;
+  }
+
+  #filter-options input {
+    margin-top: 0.7rem !important;
+  }
+
+  #filter-options-head {
+    position: fixed;
+    width: 100vw;
+    background-color: white;
+    z-index: 2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+}
+
+#filter-options label {
+  color: black !important;
+}
+
+#filter-options hr {
+  border-top: black !important;
+  border-top-style: solid !important;
+  border-top-width: 1px !important;
+}
+
+#filter-options strong {
+  font-weight: bold !important;
+  color: #212529 !important;
+}
+
+#filter-options h4, #filter-options h3, #filter-options h5 {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+#filter-options .filter-option{
+  cursor: pointer;
+}
+
+#close-mobile-filter {
+  cursor: pointer;
 }
